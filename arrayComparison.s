@@ -1,6 +1,7 @@
 .data
 array1: .word 1, 2, 3, 4, 5, 6, 7, 8, 9
 array2: .word 2, 3, 4, 5, 6, 7, 8, 9, 10
+result: .word 0
 
 .global _start
 _start:
@@ -9,6 +10,7 @@ _start:
 	mov r2, #4 @Offset
 	ldr r3, =array1 @Array1 pointer
 	ldr r4, =array2 @Array2 pointer
+	ldr r8, =result
 	
 loop_greater:
 	cmp r1, #9
@@ -65,3 +67,4 @@ loop_less_exit:
 	mov r0, #0 @load 0 to r0 since none of the conditions passed
 
 exit:
+	str r0, [r8]
